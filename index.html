@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STEVE MUGI ACADEMY | Hands-on Cyber Security Training</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://tailwindcss.com"></script>
+    <!-- FontAwesome for hacking icons -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <style>
+        .terminal-glow { text-shadow: 0 0 5px rgba(34, 211, 238, 0.5); }
+        .scrollbar-none::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col">
+
+    <!-- Header Navigation bar matching THM theme -->
+    <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="bg-cyan-500 text-slate-950 p-2 rounded-lg font-black text-xl tracking-wider">
+                    <i class="fas fa-terminal"></i> SMA
+                </div>
+                <div>
+                    <h1 class="text-lg font-black tracking-tight text-white">STEVE MUGI ACADEMY</h1>
+                    <p class="text-xs text-cyan-400 font-mono tracking-widest uppercase">Ethical Cyber Labs</p>
+                </div>
+            </div>
+            
+            <!-- Dashboard Stats Tracking -->
+            <div class="flex items-center gap-6 text-sm font-mono">
+                <div class="bg-slate-950/80 px-3 py-1.5 rounded-md border border-slate-800 flex items-center gap-2">
+                    <i class="fas fa-fire text-orange-500"></i>
+                    <span>Streak: <strong id="user-streak" class="text-white">1 Day</strong></span>
+                </div>
+                <div class="bg-slate-950/80 px-3 py-1.5 rounded-md border border-slate-800 flex items-center gap-2">
+                    <i class="fas fa-trophy text-yellow-500"></i>
+                    <span>Score: <strong id="user-score" class="text-cyan-400">0 pts</strong></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Grid Dashboard Matrix Layout -->
+    <main class="container mx-auto px-4 py-6 flex flex-col lg:flex-row gap-6 flex-1">
+        
+        <!-- Left Column: Syllabus Lab Rooms Catalog selection -->
+        <section class="w-full lg:w-2/3 space-y-6">
+            <div class="border border-slate-800 bg-slate-900/60 rounded-xl p-6 backdrop-blur-sm">
+                <h2 class="text-2xl font-bold tracking-tight text-white mb-2 flex items-center gap-2">
+                    <i class="fas fa-book text-cyan-500"></i> Active Training Path: Pentesting Fundamentals
+                </h2>
+                <p class="text-slate-400 text-sm">Deploy secure sandboxed mock scenarios to understand structural vulnerabilities, cryptography encoding formats, and system defense postures.</p>
+                
+                <!-- Lab Progress Progress Bar Tracking -->
+                <div class="mt-4">
+                    <div class="flex justify-between text-xs font-mono text-slate-400 mb-1">
+                        <span>Path Completion</span>
+                        <span id="progress-percentage">0%</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                        <div id="progress-fill" class="bg-cyan-500 h-full w-0 transition-all duration-500"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Syllabus Task Card Lists -->
+            <div class="space-y-4">
+                
+                <!-- ROOM 1: Cryptographic Hashes Verification -->
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-slate-700 transition" id="room-1">
+                    <div class="flex justify-between items-start gap-4 flex-wrap">
+                        <div>
+                            <span class="bg-emerald-500/10 text-emerald-400 text-xs px-2 py-0.5 rounded font-mono border border-emerald-500/20 uppercase">Task 1 - Easy</span>
+                            <h3 class="text-xl font-bold text-white mt-1">Data Integrity & Hashing (MD5)</h3>
+                            <p class="text-sm text-slate-400 mt-1">Malicious payloads are often hidden behind manipulated checksum arrays. Identify the clean verification code string value.</p>
+                        </div>
+                        <div class="text-right font-mono text-sm text-cyan-400" id="room-1-status">0 / 100 pts</div>
+                    </div>
+                    <div class="mt-4 bg-slate-950 p-4 rounded-lg font-mono text-sm border border-slate-800/60 text-slate-300">
+                        <p class="text-yellow-400 mb-2"><i class="fas fa-info-circle"></i> Scenario briefing:</p>
+                        <p>Analyze the string phrase: <code class="text-cyan-400 bg-slate-900 px-1 py-0.5 rounded">STEVE_MUGI_SECURE</code></p>
+                        <p class="mt-1">Generate the corresponding MD5 checksum hash value to unlock access credentials.</p>
+                    </div>
+                    <!-- Flag Input Action Block -->
+                    <div class="mt-4 flex gap-3">
+                        <input type="text" id="flag-1" placeholder="Enter hash value flag here..." class="bg-slate-950 border border-slate-800 focus:border-cyan-500 focus:outline-none rounded-lg px-3 py-2 text-sm font-mono flex-1 text-cyan-300">
+                        <button onclick="submitFlag(1, '3a7d4db5cd2221bba8cf2df1cf3fb5b7')" class="bg-cyan-600 hover:bg-cyan-500 font-bold px-5 py-2 text-sm rounded-lg text-slate-950 transition tracking-wide uppercase">Submit</button>
+                    </div>
+                    <div class="mt-2 text-xs flex justify-between">
+                        <button onclick="toggleHint('hint-1')" class="text-slate-400 hover:text-slate-300 font-mono"><i class="fas fa-lightbulb"></i> View hint</button>
+                        <span id="hint-1" class="hidden text-amber-400 font-mono text-right">Hint: You can use an online MD5 generator tool or use a built-in terminal hash converter.</span>
+                    </div>
+                </div>
+
+                <!-- ROOM 2: Encoding vs Encryption Analyser -->
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-slate-700 transition" id="room-2">
+                    <div class="flex justify-between items-start gap-4 flex-wrap">
+                        <div>
+                            <span class="bg-amber-500/10 text-amber-400 text-xs px-2 py-0.5 rounded font-mono border border-amber-500/20 uppercase">Task 2 - Medium</span>
+                            <h3 class="text-xl font-bold text-white mt-1">Base64 Encoded Strings Parsing</h3>
+                            <p class="text-sm text-slate-400 mt-1">Attack vectors routinely utilize structural masking to bypass network perimeter firewalls via raw binary streams.</p>
+                        </div>
+                        <div class="text-right font-mono text-sm text-cyan-400" id="room-2-status">0 / 100 pts</div>
+                    </div>
+                    <div class="mt-4 bg-slate-950 p-4 rounded-lg font-mono text-sm border border-slate-800/60 text-slate-300">
+                        <p class="text-yellow-400 mb-2"><i class="fas fa-info-circle"></i> Scenario briefing:</p>
+                        <p>We intercepted an internal command transmission packet array reading exactly:</p>
+                        <p class="text-cyan-400 bg-slate-900 px-2 py-1 rounded inline-block mt-1 font-bold">U1RFVkVfVEVDSF9IVUJfMjAyNg==</p>
+                        <p class="mt-2">Extract the original plaintext flag string from this encoded sequence string.</p>
+                    </div>
+                    <!-- Flag Input Action Block -->
+                    <div class="mt-4 flex gap-3">
+                        <input type="text" id="flag-2" placeholder="Enter plaintext string flag here..." class="bg-slate-950 border border-slate-800 focus:border-cyan-500 focus:outline-none rounded-lg px-3 py-2 text-sm font-mono flex-1 text-cyan-300">
+                        <button onclick="submitFlag(2, 'STEVE_TECH_HUB_2026')" class="bg-cyan-600 hover:bg-cyan-500 font-bold px-5 py-2 text-sm rounded-lg text-slate-950 transition tracking-wide uppercase">Submit</button>
+                    </div>
+                    <div class="mt-2 text-xs flex justify-between">
+                        <button onclick="toggleHint('hint-2')" class="text-slate-400 hover:text-slate-300 font-mono"><i class="fas fa-lightbulb"></i> View hint</button>
+                        <span id="hint-2" class="hidden text-amber-400 font-mono text-right">Hint: Base64 strings use character mapping blocks that always terminate or pad string fractions using "=" matching tokens.</span>
+                    </div>
+                </div>
+
+                <!-- ROOM 3: Brute Force Password Entropies Analyzer -->
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-slate-700 transition" id="room-3">
+                    <div class="flex justify-between items-start gap-4 flex-wrap">
+                        <div>
+                            <span class="bg-red-500/10 text-red-400 text-xs px-2 py-0.5 rounded font-mono border border-red-500/20 uppercase">Task 3 - Advanced</span>
+                            <h3 class="text-xl font-bold text-white mt-1">Brute-Force Dictionary Vulnerability Mitigation</h3>
+                            <p class="text-sm text-slate-400 mt-1">Audit administrative parameters against default weak system passwords to eliminate configuration flaws.</p>
+                        </div>
+                        <div class="text-right font-mono text-sm text-cyan-400" id="room-3-status">0 / 100 pts</div>
